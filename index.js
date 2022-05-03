@@ -9,6 +9,8 @@ connection()
 
 const app = express()
 
+app.use(express.json())
+
 usersRouter(app)
 
 app.get('/', (req, res) => {

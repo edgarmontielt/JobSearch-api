@@ -1,6 +1,6 @@
-const { mongoose } = require('../config/db')
+const { mongoose: { Schema, model } } = require('../config/db')
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
      {
           username: {
                type: String,
@@ -21,5 +21,5 @@ const userSchema = new mongoose.Schema(
      }
 )
 
-module.exports = mongoose.model('Users', userSchema)
+module.exports = model('Users', userSchema)
 
