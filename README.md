@@ -1,4 +1,4 @@
-# JobSearch API
+<h1 align="center">JobSearch API</h1>
 
 <h3 align="center">
   This repository is the backend of jobsearch with NodeJS
