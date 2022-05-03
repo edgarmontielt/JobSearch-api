@@ -9,17 +9,23 @@ function users(app) {
 
      router.get('/', async (req, res) => {
           const users = await userServ.getAll()
-          return res.json(users)
+          return res.status(200).json(users)
      })
 
      router.post('/', async (req, res) => {
-          const user = await userServ.create(req.body)
-          return res.json(user)
+          const { username, email, password } = req.body
+          const user = await userServ.create({username, email, password})
+          return res.status(200).json(user)
      })
 
      router.put('/:id', async (req, res) => {
           const newData = await userServ.update(req.params.id, req.body)
-          return res.json(newData)
+          return res.status(200).json(newData)
+     })
+
+     router.delete('/:id', async (req, res) =>{ 
+          const result = await userServ.delete(req.params.id)
+          return res.status(204).json({message: "User eliminated"})
      })
      
 

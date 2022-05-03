@@ -1,4 +1,5 @@
 const { mongoose: { Schema, model } } = require('../config/db')
+const bcrypt = require('bcrypt')
 
 const userSchema = new Schema(
      {
@@ -20,6 +21,11 @@ const userSchema = new Schema(
           versionKey: false,
      }
 )
+
+userSchema.statics.encryptPassword = async (password) => {
+     const salt = await bcrypt.genSalt(10)
+     return await bcrypt.hash(password, salt)
+}
 
 module.exports = model('Users', userSchema)
 
