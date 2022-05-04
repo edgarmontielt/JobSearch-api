@@ -17,12 +17,6 @@ function users(app) {
           return res.status(200).json(user)
      })
 
-     router.post('/', async (req, res) => {
-          const { username, email, password } = req.body
-          const user = await userServ.create({ username, email, password })
-          return res.status(200).json(user)
-     })
-
      router.put('/:id', async (req, res) => {
           const newData = await userServ.update(req.params.id, req.body)
           return res.status(200).json(newData)

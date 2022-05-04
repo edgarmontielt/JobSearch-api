@@ -19,20 +19,6 @@ class Users {
           }
      }
 
-     async create(data) {
-          try {
-               const newUser = new UserModel({
-                    username: data.username,
-                    email: data.email,
-                    password: await UserModel.encryptPassword(data.password),
-               });
-               const results = await newUser.save()
-               return results
-          } catch (error) {
-               console.log(error);
-          }
-     }
-
      async update(id, data) {
           try {
                const newData = await UserModel.findByIdAndUpdate(id, data, { new: true })
