@@ -19,7 +19,7 @@ npm install
 
 Run in enviroment local
 ```
-npm install
+npm run dev
 ```
 
 ## Set enviroment variables
