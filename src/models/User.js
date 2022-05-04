@@ -27,5 +27,9 @@ userSchema.statics.encryptPassword = async (password) => {
      return await bcrypt.hash(password, salt)
 }
 
+userSchema.statics.comparePassword = async (password, passwordReceived) => {
+     return await bcrypt.compare(password, passwordReceived)
+}
+
 module.exports = model('Users', userSchema)
 
