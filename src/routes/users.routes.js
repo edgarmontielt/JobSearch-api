@@ -12,9 +12,14 @@ function users(app) {
           return res.status(200).json(users)
      })
 
+     router.get('/:id', async (req, res) => {
+          const user = await userServ.getOne(req.params.id)
+          return res.status(200).json(user)
+     })
+
      router.post('/', async (req, res) => {
           const { username, email, password } = req.body
-          const user = await userServ.create({username, email, password})
+          const user = await userServ.create({ username, email, password })
           return res.status(200).json(user)
      })
 
@@ -23,12 +28,10 @@ function users(app) {
           return res.status(200).json(newData)
      })
 
-     router.delete('/:id', async (req, res) =>{ 
+     router.delete('/:id', async (req, res) => {
           const result = await userServ.delete(req.params.id)
-          return res.status(204).json({message: "User eliminated"})
+          return res.status(200).json({ message: "User eliminated", result })
      })
-     
-
 }
 
 module.exports = users
