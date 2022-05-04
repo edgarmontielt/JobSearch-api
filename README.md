@@ -16,3 +16,19 @@ Install dependencies and node_modules
 ```
 npm install
 ```
+
+
+<h2>Run in enviroment local</h2>
+```
+npm run dev
+```
+
+## Set enviroment variables
+
+```
+PORT=
+DB_USERNAME=
+DB_PASSWORD=
+DB_HOST=
+DB_NAME=
+```
