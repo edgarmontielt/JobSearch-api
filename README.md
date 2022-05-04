@@ -17,10 +17,9 @@ Install dependencies and node_modules
 npm install
 ```
 
-
-<h2>Run in enviroment local</h2>
+Run in enviroment local
 ```
-npm run dev
+npm install
 ```
 
 ## Set enviroment variables
