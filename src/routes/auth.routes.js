@@ -9,13 +9,17 @@ function auth(app) {
      router.post('/login', async (req, res) => {
           const { email, password } = req.body
           const result = await authServ.logIn(email, password)
-          return res.status(200).json(result)
+          return res
+               .status(result.code ? result.code : 200)
+               .json(result.message ? { message: result.message } : result)
      })
 
      router.post('/signup', async (req, res) => {
           const { username, email, password } = req.body
-          const user = await authServ.signUp({ username, email, password })
-          return res.status(200).json(user)
+          const result = await authServ.signUp({ username, email, password })
+          return res
+               .status(result.code ? result.code : 200)
+               .json(result.message ? { message: result.message } : result)
      })
 }
 

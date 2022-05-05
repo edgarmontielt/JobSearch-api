@@ -11,10 +11,8 @@ const userSchema = new Schema(
                type: String,
                unique: true,
           },
-          password: {
-               type: String,
-               unique: true,
-          }
+          password: String,
+          role: []
      },
      {
           timestamps: true,

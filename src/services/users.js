@@ -19,6 +19,33 @@ class Users {
           }
      }
 
+     async validateEmail(email) {
+          try {
+               const userFound = await UserModel.find({ email })
+               if (userFound.length > 0) {
+                   return { exists: true, message: 'User already exists', data: userFound[0] }
+               }
+               return { exists: false, message: '', user: userFound }
+           } catch (error) {
+               console.log(error);
+           }
+     }
+
+     async create(data) {
+          try {
+               const newUser = new UserModel({
+                    username: data.username,
+                    email: data.email,
+                    password: await UserModel.encryptPassword(data.password),
+               });
+               const result = await newUser.save()
+               return result
+          } catch (error) {
+               console.log(error);
+               return error
+          }
+     }
+
      async update(id, data) {
           try {
                const newData = await UserModel.findByIdAndUpdate(id, data, { new: true })
