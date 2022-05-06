@@ -12,6 +12,15 @@ const userSchema = new Schema(
           role: {
                type: String,
                enum: ['postulante', 'empleador', 'admin']
+          },
+          personalInformation: {
+               name: String,
+               country: String,
+               phoneNumber: String
+          },
+          cv: {
+               ref: 'CV',
+               type: Schema.Types.ObjectId,
           }
      },
      {

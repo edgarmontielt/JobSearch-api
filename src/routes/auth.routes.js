@@ -16,8 +16,7 @@ function auth(app) {
      })
 
      router.post('/signup', async (req, res) => {
-          const { username, email, password } = req.body
-          const result = await authServ.signUp({ username, email, password })
+          const result = await authServ.signUp(req.body)
           return res
                .status(result.code ? result.code : 200)
                .json(result.message ? { message: result.message } : result)

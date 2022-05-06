@@ -37,6 +37,7 @@ class Users {
                     username: data.username,
                     email: data.email,
                     password: await UserModel.encryptPassword(data.password),
+                    personalInformation: data.personalInformation
                });
                const result = await newUser.save()
                return result

@@ -2,8 +2,7 @@ const UserModel = require('../models/User')
 
 const isAdmin = async (req, res, next) => {
     try {
-        const { id } = req
-        const user = await UserModel.findById(id)
+        const user = await UserModel.findById(req.id)
         if (user.role === 'admin') {
             next()
             return // End method
