@@ -3,16 +3,16 @@ const bcrypt = require('bcrypt')
 
 const userSchema = new Schema(
      {
-          username: {
-               type: String,
-               unique: true,
-          },
+          username: String,
           email: {
                type: String,
                unique: true,
           },
           password: String,
-          role: []
+          role: {
+               type: String,
+               enum: ['postulante', 'empleador', 'admin']
+          }
      },
      {
           timestamps: true,

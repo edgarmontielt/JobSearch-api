@@ -9,6 +9,7 @@ function auth(app) {
      router.post('/login', async (req, res) => {
           const { email, password } = req.body
           const result = await authServ.logIn(email, password)
+         
           return res
                .status(result.code ? result.code : 200)
                .json(result.message ? { message: result.message } : result)
