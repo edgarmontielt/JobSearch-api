@@ -2,8 +2,9 @@ const express = require('express')
 const morgan = require('morgan')
 
 // Routes import
-const usersRouter = require('./routes/users.routes')
-const authRouter = require('./routes/auth.routes')
+const users = require('./routes/users.routes')
+const auth = require('./routes/auth.routes')
+const cv = require('./routes/cv.routes')
 
 const app = express()
 
@@ -13,8 +14,9 @@ app.use(morgan('dev'))
 // JSON Middleware
 app.use(express.json())
 
-usersRouter(app)
-authRouter(app)
+users(app)
+auth(app)
+cv(app)
 
 app.get('/', (req, res) => {
      res.json({ hello: 'World' })

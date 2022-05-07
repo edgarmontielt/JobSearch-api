@@ -18,10 +18,6 @@ const userSchema = new Schema(
                country: String,
                phoneNumber: String
           },
-          cv: {
-               ref: 'CV',
-               type: Schema.Types.ObjectId,
-          }
      },
      {
           timestamps: true,
