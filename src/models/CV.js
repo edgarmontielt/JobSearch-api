@@ -2,7 +2,7 @@ const { mongoose: { Schema, model } } = require('../config/db')
 
 const cvSchema = new Schema({
     idUser: {
-        ref:'Users',
+        ref: 'Users',
         type: Schema.Types.ObjectId
     },
     professionalProfile: {
@@ -15,16 +15,14 @@ const cvSchema = new Schema({
             levelStudy: String,
         }
     ],
-    languages: [
-        { 
-            idiom: String 
-        }
-    ],
-    habilities:[
-        {
-            language: String
-        }
-    ]
+    languages: {
+        type: Array,
+        default: []
+    },
+    habilities: {
+        type: Array,
+        default: []
+    }
 })
 
 module.exports = model('CV', cvSchema)
