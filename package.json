@@ -1,7 +1,7 @@
 {
   "name": "jobsearch",
   "version": "1.0.0",
-  "description": "",
+  "description": "jobsearch APIREST",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,10 +9,11 @@
     "dev": "cross-env NODE_ENV=development npx nodemon ./src/index.js "
   },
   "keywords": [],
-  "author": "",
+  "author": "edgarmt.dev",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "express": "^4.18.0",

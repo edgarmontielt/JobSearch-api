@@ -1,5 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors')
+const pkg = require('../package.json')
 
 // Routes import
 const users = require('./routes/users.routes')
@@ -8,18 +10,32 @@ const cv = require('./routes/cv.routes')
 
 const app = express()
 
+app.set('pkg', pkg)
+
 //Morgan
 app.use(morgan('dev'))
 
 // JSON Middleware
 app.use(express.json())
 
+//CORS
+app.use(cors({
+     origin: '*'
+}))
+
+
 users(app)
 auth(app)
 cv(app)
 
 app.get('/', (req, res) => {
-     res.json({ hello: 'World' })
+     const projectData = {
+          author: app.get('pkg').author,
+          name: app.get('pkg').name,
+          description: app.get('pkg').description,
+          version: app.get('pkg').version,
+     }
+     return res.json(projectData)
 })
 
 module.exports = app

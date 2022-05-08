@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const { verifyToken } = require('../middleware')
 const CVService = require('../services/cv')
  
 function cv(app) {
@@ -8,10 +9,10 @@ function cv(app) {
 
     router.post('/create', async (req, res) => {
         const result = await cvServ.create(req.body)
-        return res.json({ hi: 'El di' })
+        return res.json(result)
     })
 
-    router.get('/:id', async (req, res) => {
+    router.get('/:id', verifyToken, async (req, res) => {
         const result = await cvServ.getCVandUser(req.params.id)
         return res.json(result)
     })

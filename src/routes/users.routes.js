@@ -22,14 +22,14 @@ function users(app) {
                .json(user)
      })
 
-     router.put('/:id', async (req, res) => {
+     router.put('/:id', verifyToken, async (req, res) => {
           const newData = await userServ.update(req.params.id, req.body)
           return res
                .status(200)
                .json(newData)
      })
 
-     router.delete('/:id', async (req, res) => {
+     router.delete('/:id', [verifyToken, isAdmin], async (req, res) => {
           const result = await userServ.delete(req.params.id)
           return res
                .status(200)

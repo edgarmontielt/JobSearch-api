@@ -3,9 +3,10 @@ const { jwtSecret } = require("../config")
 
 const verifyToken = (req, res, next) => {
     const bearer = req.headers.authorization
-    const [, token] = bearer.split(' ')
 
-    if (!bearer) return res.status(401).json({ error: true, message: 'You dont have permissions' })
+    if (!bearer) return res.status(401).json({ error: true, message: 'No token provider' })
+    
+    const [, token] = bearer.split(' ')
 
     try {
         const decoded = jwt.verify(token, jwtSecret)
