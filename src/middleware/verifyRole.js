@@ -1,9 +1,6 @@
-const UserModel = require('../models/User')
-
-const isAdmin = async (req, res, next) => {
+const isAdmin = (req, res, next) => {
     try {
-        const user = await UserModel.findById(req.id)
-        if (user.role === 'admin') {
+        if (req.user.role === 'admin') {
             return next()
         }
         return res.status(401).json({ error: true, message: 'You dont have permissions' })

@@ -5,17 +5,17 @@ const verifyToken = (req, res, next) => {
     const bearer = req.headers.authorization
 
     if (!bearer) return res.status(401).json({ error: true, message: 'No token provider' })
-    
+
     const [, token] = bearer.split(' ')
 
     try {
         const decoded = jwt.verify(token, jwtSecret)
-        req.id = decoded.id
+        console.log(decoded);
+        req.user = decoded
         return next()
     } catch (error) {
-        return res.status(401).json({ error: true, message: error })
+        return res.status(401).json({ failed: true, error })
     }
 }
-
 
 module.exports = { verifyToken }
