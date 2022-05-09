@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const AuthService = require('../services/auth')
+const { verifyToken } = require('../middleware')
 
 function auth(app) {
      const router = Router()
@@ -22,7 +23,7 @@ function auth(app) {
                .json(result.message ? { message: result.message } : result)
      })
 
-     router.post('/validate', async (req, res) => {
+     router.post('/validate', verifyToken, async (req, res) => {
           return res.json({ logged: true, user: req.user })
      })
 }

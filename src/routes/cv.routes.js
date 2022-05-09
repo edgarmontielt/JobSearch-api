@@ -10,12 +10,14 @@ function cv(app) {
     router.post('/create', verifyToken, async (req, res) => {
         const { user: { id } } = req
         const result = await cvServ.create(id, req.body)
-        return res.json(result)
+        return res
+            .status(200).json(result)
     })
 
     router.get('/:id', verifyToken, async (req, res) => {
         const result = await cvServ.getCVandUser(req.params.id)
-        return res.json(result)
+        return res
+            .status(200).json(result)
     })
 
 

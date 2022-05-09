@@ -15,7 +15,7 @@ function users(app) {
                .json(users)
      })
 
-     router.get('/:id', async (req, res) => {
+     router.get('/:id', verifyToken, async (req, res) => {
           const user = await userServ.getOne(req.params.id)
           return res
                .status(200)
