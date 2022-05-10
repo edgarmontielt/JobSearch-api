@@ -21,7 +21,7 @@ function cv(app) {
     })
 
     router.put('/update/:id', verifyToken, async(req, res) => {
-        const result = await cvServ.update(req.params.id, req.body)
+        const result = await cvServ.updateHabilities(req.body)
         return res.status(200).json(result)
     })
 

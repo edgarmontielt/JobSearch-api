@@ -2,8 +2,12 @@ const cvModel = require('../models/CV')
 
 class Curriculum {
     async getCVandUser(id) {
-        const cv = await cvModel.find({ idUser: id }).populate('idUser')
-        return cv
+        try {
+            const cv = await cvModel.find({ idUser: id }).populate('idUser')
+            return cv
+        } catch (error) {
+            return error
+        }
     }
 
     async create(id, data) {
@@ -14,7 +18,10 @@ class Curriculum {
                 const result = await cvModel.create(newCV)
                 return result
             }
-            return { message: 'There is already a CV assigned to your user', cvFound: result.userCV }
+            return {
+                message: 'There is already a CV assigned to your user',
+                cvFound: result.userCV
+            }
         } catch (error) {
             return error
         }
@@ -26,6 +33,18 @@ class Curriculum {
             return result
         } catch (error) {
 
+        }
+    }
+
+    async updateHabilities(data) {
+        try {
+            let newHabilities = []
+            const { habilities } = await cvModel.findOne({ id: '6279757b3856cc213dd6e1c3' })
+            newHabilities = [...habilities, data.new]
+            const result = await cvModel.updateOne({ id: '6279757b3856cc213dd6e1c3' }, { $set: { habilities: newHabilities } })
+            return result
+        } catch (error) {
+            return error
         }
     }
 
