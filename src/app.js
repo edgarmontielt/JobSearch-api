@@ -7,6 +7,7 @@ const pkg = require('../package.json')
 const users = require('./routes/users.routes')
 const auth = require('./routes/auth.routes')
 const cv = require('./routes/cv.routes')
+const jobs = require('./routes/jobs.routes')
 
 const app = express()
 
@@ -23,10 +24,11 @@ app.use(cors({
      origin: '*'
 }))
 
-
+// Routes
 users(app)
 auth(app)
 cv(app)
+jobs(app)
 
 app.get('/', (req, res) => {
      const projectData = {
