@@ -20,12 +20,15 @@ function cv(app) {
             .status(200).json(result)
     })
 
-    router.put('/update/:id', verifyToken, async(req, res) => {
-        const result = await cvServ.updateHabilities(req.body)
+    router.put('/update/:id', verifyToken, async (req, res) => {
+        const result = await cvServ.update(req.body)
         return res.status(200).json(result)
     })
 
-
+    router.put('/update/skills/:id', async (req, res) => {
+        const result = await cvServ.updateSkills(req.params.id, req.body)
+        return res.status(200).json(result)
+    })
 }
 
 module.exports = cv

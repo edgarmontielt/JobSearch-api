@@ -36,13 +36,13 @@ class Curriculum {
         }
     }
 
-    async updateHabilities(data) {
+    async updateSkills(idCv, data) {
         try {
-            let newHabilities = []
-            const { habilities } = await cvModel.findOne({ id: '6279757b3856cc213dd6e1c3' })
-            newHabilities = [...habilities, data.new]
-            const result = await cvModel.updateOne({ id: '6279757b3856cc213dd6e1c3' }, { $set: { habilities: newHabilities } })
-            return result
+            let newSkills = []
+            const { habilities } = await cvModel.findOne({ id: idCv })
+            newSkills = [...habilities, data.new]
+            const result = await cvModel.updateOne({ id: idCv }, { $set: { habilities: newSkills } })
+            return { message: 'Habilities modify', newSkills }
         } catch (error) {
             return error
         }
