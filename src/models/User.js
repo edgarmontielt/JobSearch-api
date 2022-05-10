@@ -9,10 +9,12 @@ const userSchema = new Schema(
                unique: true,
           },
           password: String,
-          role: {
-               type: String,
-               enum: ['postulante', 'empleador', 'admin']
-          },
+          role: [
+               {
+                    ref: 'Role',
+                    type: Schema.Types.ObjectId
+               }
+          ],
           personalInformation: {
                name: String,
                country: String,

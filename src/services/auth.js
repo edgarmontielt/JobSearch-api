@@ -51,7 +51,6 @@ class Auth {
     }
 
     async signUp(data) {
-        console.log(data);
         try {
             const validate = await this.userServ.validateEmail(data.email)
             if (!validate.exists) {

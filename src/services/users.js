@@ -1,3 +1,4 @@
+const Role = require("../models/Role");
 const UserModel = require("../models/User");
 
 class Users {
@@ -21,29 +22,29 @@ class Users {
 
      async validateEmail(email) {
           try {
-               const userFound = await UserModel.find({ email })
+               const userFound = await UserModel.find({ email }).populate('role')
                if (userFound.length > 0) {
-                   return { exists: true, message: 'User already exists', data: userFound[0] }
+                    return { exists: true, message: 'User already exists', data: userFound[0] }
                }
                return { exists: false, message: '', user: userFound }
-           } catch (error) {
+          } catch (error) {
                console.log(error);
-           }
+          }
      }
 
      async create(data) {
           try {
+               const role = await Role.findOne({ name: 'user' })
                const newUser = new UserModel({
                     username: data.username,
                     email: data.email,
                     password: await UserModel.encryptPassword(data.password),
                     personalInformation: data.personalInformation,
-                    habilities: data.habilities
+                    role: [role._id]
                });
                const result = await newUser.save()
                return result
           } catch (error) {
-               console.log(error);
                return error
           }
      }

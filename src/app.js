@@ -8,8 +8,10 @@ const users = require('./routes/users.routes')
 const auth = require('./routes/auth.routes')
 const cv = require('./routes/cv.routes')
 const jobs = require('./routes/jobs.routes')
+const createRole = require('./libs/initialSetup')
 
 const app = express()
+createRole()
 
 app.set('pkg', pkg)
 
