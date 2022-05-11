@@ -11,7 +11,7 @@ const companySchema = new Schema(
             unique: true
         },
         email: {
-            type: email,
+            type: String,
             unique: true
         },
         jobs: [

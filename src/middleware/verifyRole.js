@@ -1,10 +1,8 @@
 const isAdmin = (req, res, next) => {
     try {
-
         for (const role of req.user.role) {
             if (role.name === 'admin') return next()
         }
-
         return res
             .status(401)
             .json({ error: true, message: 'You dont have permissions' })
@@ -17,11 +15,9 @@ const isAdmin = (req, res, next) => {
 
 const isModerator = (req, res, next) => {
     try {
-
         for (const role of req.user.role) {
             if (role.name === 'moderator') return next()
         }
-
         return res
             .status(401)
             .json({ error: true, message: 'You dont have permissions' })

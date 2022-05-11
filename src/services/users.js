@@ -4,7 +4,7 @@ const UserModel = require("../models/User");
 class Users {
      async getAll() {
           try {
-               const users = await UserModel.find()
+               const users = await UserModel.find().populate('role')
                return users
           } catch (error) {
                console.log(error)
@@ -56,6 +56,12 @@ class Users {
           } catch (error) {
                console.log(error)
           }
+     }
+
+     async updateRoles(idUser) {
+          const role = await Role.findOne({ name: 'moderator' })
+          const result = await UserModel.updateOne({ _id: idUser }, { $set: { role: [role]} })
+          return result
      }
 
      async delete(id) {

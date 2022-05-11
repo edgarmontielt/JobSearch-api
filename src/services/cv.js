@@ -42,7 +42,7 @@ class Curriculum {
             const { habilities } = await cvModel.findOne({ id: idCv })
             newSkills = [...habilities, data.new]
             await cvModel.updateOne({ id: idCv }, { $set: { habilities: newSkills } })
-            return { message: 'Habilities modify', newSkills }
+            return { message: 'Habilities modify', skills: { ...newSkills } }
         } catch (error) {
             return error
         }

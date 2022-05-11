@@ -19,7 +19,7 @@ class Auth {
         const token = jwt.sign(data, jwtSecret, { expiresIn: '1d' })
         return { 
             succcess: true,
-            data,
+            user,
             token 
         }
     }
@@ -37,7 +37,7 @@ class Auth {
 
                 return { 
                     message: 'Password incorrect', 
-                    code: 400 
+                    code: 406 
                 }
             }
             return { 

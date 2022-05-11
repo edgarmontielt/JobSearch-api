@@ -2,13 +2,14 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 const pkg = require('../package.json')
+const createRole = require('./libs/initialSetup')
 
 // Routes import
 const users = require('./routes/users.routes')
 const auth = require('./routes/auth.routes')
 const cv = require('./routes/cv.routes')
 const jobs = require('./routes/jobs.routes')
-const createRole = require('./libs/initialSetup')
+const company = require('./routes/company.routes')
 
 const app = express()
 createRole()
@@ -31,6 +32,7 @@ users(app)
 auth(app)
 cv(app)
 jobs(app)
+company(app)
 
 app.get('/', (req, res) => {
      const projectData = {

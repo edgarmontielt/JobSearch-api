@@ -35,6 +35,11 @@ function users(app) {
                .status(200)
                .json({ message: "User eliminated", result })
      })
+
+     router.post('/updateRole/:id', async(req, res) => {
+          const result = await userServ.updateRoles(req.params.id)
+          return res.json(result)
+     })
 }
 
 module.exports = users
