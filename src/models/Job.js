@@ -6,22 +6,22 @@ const jobSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Company'
         },
-        name: String,
+        title: String,
         description: String,
         location: {
             state: String,
             country: String,
         },
-        salary: String,
+        monthlySalary: String,
         requirements: {
             type: Array,
             default: []
         },
-        offer: {
+        jobOffer: {
             type: Array,
             default: []
         },
-        candidates: [
+        aplicants: [
             {
                 id: {
                     type: Schema.Types.ObjectId,
