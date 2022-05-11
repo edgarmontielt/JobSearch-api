@@ -42,11 +42,27 @@ class Company {
             const job = await this.jobServ.create({ idCompany: idComapny, ...data })
             const result = await companyModel.updateOne(
                 { _id: idComapny },
-                {
-                    $push: { jobs: job.id }
-                })
+                { $push: { jobs: job.id } }
+            )
             return {
                 message: 'Job created successfull',
+                job,
+                result
+            }
+        } catch (error) {
+            return error
+        }
+    }
+
+    async deleteJob(idCompany, idJob) {
+        try {
+            const job = await this.jobServ.delete(idJob)
+            const result = await companyModel.updateOne(
+                { _id: idCompany },
+                { $pull: { jobs: job.id } }
+            )
+            return {
+                message: 'Job deleted successfull',
                 job,
                 result
             }

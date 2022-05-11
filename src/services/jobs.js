@@ -1,4 +1,4 @@
-const JobModel = require("../models/Job")
+const JobModel = require('../models/Job')
 
 class Jobs {
 
@@ -14,6 +14,15 @@ class Jobs {
     async create(data) {
         try {
             const result = await JobModel.create(data)
+            return result
+        } catch (error) {
+            return error
+        }
+    }
+
+    async delete(id) {
+        try {
+            const result = await JobModel.findByIdAndDelete(id)
             return result
         } catch (error) {
             return error
