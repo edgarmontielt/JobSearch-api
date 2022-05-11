@@ -5,7 +5,7 @@ function jobs(app) {
     const router = Router()
     app.use('/api/jobs', router)
 
-    router.get('/', verifyToken, (req, res) => {
+    router.get('/', (req, res) => {
         console.log(req.user);
         return res.json({ hi: 'World' }) 
     })

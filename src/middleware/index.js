@@ -1,5 +1,5 @@
 const { verifyToken } = require('./verifyToken')
-const { isAdmin } = require('./verifyRole')
+const { isAdmin, isModerator } = require('./verifyRole')
 
 
-module.exports = { verifyToken, isAdmin }
+module.exports = { verifyToken, isAdmin, isModerator }
