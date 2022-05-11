@@ -11,7 +11,7 @@ class Company {
 
     async getAll() {
         try {
-            const result = await companyModel.find()
+            const result = await companyModel.find().populate('jobs')
             return result
         } catch (error) {
             return result
@@ -38,9 +38,21 @@ class Company {
     }
 
     async addJob(idComapny, data) {
-        const job = await this.jobServ.create({ idComapny, ...data })
-        const result = await companyModel.updateOne({ _id: idComapny }, { $push: { jobs: job.id } })
-        return { message: 'Job created successfull', job, result }
+        try {
+            const job = await this.jobServ.create({ idCompany: idComapny, ...data })
+            const result = await companyModel.updateOne(
+                { _id: idComapny },
+                {
+                    $push: { jobs: job.id }
+                })
+            return {
+                message: 'Job created successfull',
+                job,
+                result
+            }
+        } catch (error) {
+            return error
+        }
     }
 }
 

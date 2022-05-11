@@ -1,13 +1,15 @@
 const { Router } = require('express')
-const { verifyToken } = require('../middleware')
+const Jobs = require('../services/jobs')
+
 
 function jobs(app) {
     const router = Router()
     app.use('/api/jobs', router)
+    const jobServ = new Jobs()
 
-    router.get('/', (req, res) => {
-        console.log(req.user);
-        return res.json({ hi: 'World' }) 
+    router.get('/', async (req, res) => {
+        const jobs = await jobServ.getAll()
+        return res.status(200).json(jobs)
     })
 }
 
