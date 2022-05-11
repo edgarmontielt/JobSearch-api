@@ -28,6 +28,12 @@ function company(app) {
             .json(result)
     })
 
+    router.delete('/delete/:id', [verifyToken, isModerator], async(req, res) => {
+        const company = await companyService.delete(req.params.id)
+        return res.json(company)
+    })
+
+
     router.post('/:id/createjob', [verifyToken, isModerator], async (req, res) => {
         const result = await companyService.addJob(req.params.id, req.body)
         return res
@@ -35,7 +41,7 @@ function company(app) {
             .json(result)
     })
 
-    router.delete('/:idCompany/deleteJob/:idJob', async (req, res) => {
+    router.delete('/:idCompany/deleteJob/:idJob', [verifyToken, isModerator], async (req, res) => {
         const result = await companyService.deleteJob(req.params.idCompany, req.params.idJob)
         return res
             .status(200)

@@ -37,6 +37,18 @@ class Company {
         }
     }
 
+    async delete(idComapny) {
+        try {
+            const result = await companyModel.findByIdAndDelete(idComapny)
+            return {
+                message: 'Company deleted successfull',
+                company: result
+            }
+        } catch (error) {
+            return error
+        }
+    }
+
     async addJob(idComapny, data) {
         try {
             const job = await this.jobServ.create({ idCompany: idComapny, ...data })
