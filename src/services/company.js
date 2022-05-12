@@ -40,10 +40,14 @@ class Company {
     async delete(idComapny) {
         try {
             const result = await companyModel.findByIdAndDelete(idComapny)
-            return {
-                message: 'Company deleted successfull',
-                company: result
+            if (result) {
+                return {
+                    message: 'Company deleted successfull',
+                    company: result
+                }
             }
+            return { message: 'Company not Found' }
+
         } catch (error) {
             return error
         }

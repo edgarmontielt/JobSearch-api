@@ -36,6 +36,18 @@ class Curriculum {
         }
     }
 
+    async addIdiom(idCv, data) {
+        try {
+            let newLanguages = []
+            const { languages } = await cvModel.findOne({ id: idCv })
+            newLanguages = [...languages, data.new]
+            await cvModel.updateOne({ id: idCv }, { $set: { languages: newLanguages } })
+            return { message: 'Habilities modify', skills: { ...newLanguages } }
+        } catch (error) {
+
+        }
+    }
+
     async updateSkills(idCv, data) {
         try {
             let newSkills = []

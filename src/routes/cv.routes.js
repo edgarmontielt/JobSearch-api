@@ -21,12 +21,17 @@ function cv(app) {
     })
 
     router.put('/update/:id', verifyToken, async (req, res) => {
-        const result = await cvServ.update(req.body)
+        const result = await cvServ.update(req.params.id, req.body)
         return res.status(200).json(result)
     })
 
     router.put('/update/skills/:id', verifyToken, async (req, res) => {
         const result = await cvServ.updateSkills(req.params.id, req.body)
+        return res.status(200).json(result)
+    })
+
+    router.put('/update/languages/:id', verifyToken, async (req, res) => {
+        const result = await cvServ.addIdiom(req.params.id, req.body)
         return res.status(200).json(result)
     })
 }
