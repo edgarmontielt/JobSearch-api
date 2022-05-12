@@ -51,7 +51,13 @@ class Users {
 
      async update(id, data) {
           try {
-               const newData = await UserModel.findByIdAndUpdate(id, data, { new: true })
+               const newUser = {
+                    username: data.username,
+                    email: data.email,
+                    password: await UserModel.encryptPassword(data.password),
+                    personalInformation: data.personalInformation,
+               }
+               const newData = await UserModel.findByIdAndUpdate(id, newUser, { new: true })
                return newData
           } catch (error) {
                console.log(error)

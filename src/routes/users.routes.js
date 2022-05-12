@@ -22,7 +22,7 @@ function users(app) {
                .json(user)
      })
 
-     router.put('/:id', verifyToken, async (req, res) => {
+     router.put('/:id', verifyToken,  async (req, res) => {
           const newData = await userServ.update(req.params.id, req.body)
           return res
                .status(200)

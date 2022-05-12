@@ -44,7 +44,6 @@ class Jobs {
             for (const item of jobs.aplicants) {
                 if (item.valueOf() === idAplicant) return { message: 'Ya te postulaste' }
             }
-
             const result = await JobModel.updateOne({ _id: idJob }, { $push: { aplicants: idAplicant } })
             return result
         } catch (error) {
