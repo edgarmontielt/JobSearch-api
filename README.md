@@ -1,7 +1,7 @@
 <h1 align="center">JobSearch API</h1>
 
 <h3 align="center">
-  This repository is the backend of jobsearch with NodeJS
+  This repository is the backend of jobsearch app with NodeJS
 </h3>
 
 

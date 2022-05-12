@@ -24,7 +24,7 @@ app.use(express.json())
 
 //CORS
 app.use(cors({
-     origin: '*'
+     origin: ['http://localhost:3000']
 }))
 
 // Routes

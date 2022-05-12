@@ -23,10 +23,8 @@ const jobSchema = new Schema(
         },
         aplicants: [
             {
-                id: {
-                    type: Schema.Types.ObjectId,
-                    ref: 'Users'
-                }
+                type: Schema.Types.ObjectId,
+                ref: 'Users'
             }
         ]
     },
