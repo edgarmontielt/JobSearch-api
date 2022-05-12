@@ -5,6 +5,9 @@
 </h3>
 
 
+## Documentation
+
+Documentation: https://documenter.getpostman.com/view/19249443/UyxgK8co
 
 ## Getting Started
 
@@ -21,6 +24,9 @@ Run in enviroment local
 ```
 npm run dev
 ```
+Open http://localhost:4000 with your browser to see some details.
+
+
 
 ## Set enviroment variables
 
