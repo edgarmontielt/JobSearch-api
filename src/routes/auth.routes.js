@@ -26,6 +26,10 @@ function auth(app) {
      router.post('/validate', verifyToken, async (req, res) => {
           return res.json({ logged: true, user: req.user })
      })
+
+     router.post('/logout', verifyToken, async (req, res) => {
+          return res.json({ logged: false, user: {} })
+     })
 }
 
 module.exports = auth
