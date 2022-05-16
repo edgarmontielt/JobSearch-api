@@ -13,7 +13,7 @@ Documentation: https://documenter.getpostman.com/view/19249443/UyxgK8co
 
 How first step clone the repository
 ```
-git clone https://github.com/edgarmontielt/JobSearch-api.git
+git clone https://github.com/edgarmontielt/jobsearch-api.git
 ```
 Install dependencies and node_modules
 ```
